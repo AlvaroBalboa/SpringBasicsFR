@@ -9,7 +9,9 @@
 
 {{#name}}
     Hello, {{.}}!
-    <form action="/logout" method="post"><button type="submit">LOGOUT</button></form>
+    <form action="/logout" method="post">
+        <button type="submit">LOGOUT</button>
+    </form>
 <br/>
 
     <form action="/create-message" method="post">
@@ -21,8 +23,13 @@
 
     {{#messages}}
     <ul>
-        {{.}}
-        <li>{{messages}} <form action="/delete-message" method="post"><input type="hidden" value="{{id}}" name="messageID"/><button type="submit">DELETE THIS POST</button> </form></li>
+        <!--{{.}}-->
+        <li>{{message}}----created by {{name}} {{id}}
+            <form action="/delete" method="post">
+                <input type="hidden" value="{{id}}" name="messageID"/>
+                <button type="submit">DELETE THIS POST</button>
+            </form>
+        </li>
 
     </ul>
     {{/messages}}

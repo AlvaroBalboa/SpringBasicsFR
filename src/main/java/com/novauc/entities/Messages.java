@@ -1,23 +1,34 @@
-package com.novauc;
+package com.novauc.entities;
+
+import javax.persistence.*;
 
 /**
  * Created by souporman on 3/13/17.
  */
+
+@Entity
+@Table(name = "messages")
 public class Messages{
+
+    @Id
+    @GeneratedValue
     int id;
+
+
+    @Column(nullable = false)
     String message;
 
-    public Messages(int id) {
-        this.id = id;
+    @ManyToOne
+    User user;
+
+
+
+    public Messages() {
     }
 
-    public Messages(String message) {
+    public Messages(String message, User user) {
         this.message = message;
-    }
-
-    public Messages(int id, String message) {
-        this.id = id;
-        this.message = message;
+        this.user = user;
     }
 
     public int getId() {
